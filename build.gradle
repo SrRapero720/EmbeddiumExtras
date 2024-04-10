@@ -69,11 +69,11 @@ dependencies {
     // DEPENDENCIES
     implementation fg.deobf("org.embeddedt:embeddium-${mcversion}:${embeddiumversion}")
     compileOnly fg.deobf("curse.maven:jei-238222:${jeiversion}")
-    compileOnly fg.deobf("curse.maven:roughly-enough-items-310111:${reiversion}")
-        compileOnly fg.deobf("curse.maven:cloth-config-348521:4973441")
-        compileOnly fg.deobf("curse.maven:architectury-api-419699:5084452")
+    implementation fg.deobf("curse.maven:roughly-enough-items-310111:${reiversion}")
+        implementation fg.deobf("curse.maven:cloth-config-348521:4973441")
+        implementation fg.deobf("curse.maven:architectury-api-419699:5084452")
 
-    implementation fg.deobf("curse.maven:emi-580555:${emiversion}")
+    compileOnly fg.deobf("curse.maven:emi-580555:${emiversion}")
     runtimeOnly fg.deobf("curse.maven:textrues-embeddium-options-910506:${embeddiumoptionsversion}")
     runtimeOnly fg.deobf("curse.maven:oculus-581495:${oculusversion}")
 
