@@ -1,13 +1,14 @@
 # RELEASE 1.2.7
 - [🐛] Fix REI is not working
-- [🐛] Disabled fastBeds and fastChets
-  - 🛠️ The config field is renamed and options in video settings are disabled too
+- [🐛] Disabled FastModels
+  - 🛠️ The config field is renamed, and options in video settings are disabled too
 - [🔥] Added "disable NameTag rendering"
   - ℹ️ Let you not render names on entities, players and item frames.
   - ℹ️ Placed in Quality tab
 - [🔥] Added "blueBand" toggle option
   - ℹ️ Let you disable the blue gradient, making skies flat-colored
   - ℹ️ Placed in Quality page
+- [🐛] Fix wrong AVG calculation (again) 
 
 # RELEASE 1.2.6
 - [🛠️] Compat fix for zume 0.18 (nojil, please slowdown)
