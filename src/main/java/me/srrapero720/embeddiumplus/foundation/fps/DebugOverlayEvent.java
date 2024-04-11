@@ -17,6 +17,8 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.Arrays;
+
 @Mod.EventBusSubscriber(modid = EmbeddiumPlus.ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class DebugOverlayEvent {
     private static final FPSDisplay DISPLAY = new FPSDisplay();
@@ -169,25 +171,30 @@ public class DebugOverlayEvent {
     }
 
     public static class AverageQueue {
-        private final int[] QUEUE = new int[18];
-        private boolean filled = false;
+        private final int[] AVG_COUNT = new int[18];
+        private boolean f = false;
         private int used = 0;
 
         void push(int value) {
-            if (used == QUEUE.length) {
-                used = 0;
-                filled = true;
+            if (this.used == this.AVG_COUNT.length) {
+                this.used = 0;
+                this.f = true;
             }
-            QUEUE[used++] = value;
+
+            if (!this.f) {
+                Arrays.fill(this.AVG_COUNT, this.used, this.AVG_COUNT.length, value);
+            }
+
+            this.AVG_COUNT[this.used++] = value;
         }
 
         int calculate() {
             int times = 0;
-            for (int i = 0; i < used; i++) {
-                times += QUEUE[i];
+            for (int i: AVG_COUNT) {
+                times += i;
             }
 
-            return times / (filled ? QUEUE.length : used);
+            return times / AVG_COUNT.length;
         }
     }
 }
