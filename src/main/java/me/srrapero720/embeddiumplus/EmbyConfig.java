@@ -242,11 +242,11 @@ public class EmbyConfig {
 
         fastChests = BUILDER
                 .comment("Toggles FastChest feature", "Without flywheel installed or using any backend, it increases FPS significatly on chest rooms")
-                .define("fastChests", false);
+                .define("fastChest", false);
 
         fastBeds = BUILDER
                 .comment("Toggles FastBeds feature")
-                .define("fastBeds", false);
+                .define("fastBed", false);
 
         // embeddiumplus -> performance -> distanceCulling
         BUILDER.push("distanceCulling");

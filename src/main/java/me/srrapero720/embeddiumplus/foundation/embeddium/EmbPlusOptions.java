@@ -137,7 +137,8 @@ public class EmbPlusOptions {
                         },
                         (options) -> EmbyConfig.fastChestsCache)
                 .setImpact(OptionImpact.HIGH)
-                .setEnabled(FastModels.canUseOnChests())
+//                .setEnabled(FastModels.canUseOnChests())
+                .setEnabled(false)
                 .setFlags(OptionFlag.REQUIRES_RENDERER_RELOAD)
                 .build();
 
@@ -153,6 +154,7 @@ public class EmbPlusOptions {
                         (options) -> EmbyConfig.fastBedsCache)
                 .setImpact(OptionImpact.LOW)
 //                .setEnabled(EmbyTools.isFlywheelOff())
+                .setEnabled(false)
                 .setFlags(OptionFlag.REQUIRES_RENDERER_RELOAD)
                 .build();
 
