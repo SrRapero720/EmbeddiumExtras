@@ -25,7 +25,6 @@ import static me.srrapero720.embeddiumplus.EmbeddiumPlus.LOGGER;
 @Mod.EventBusSubscriber(modid = EmbeddiumPlus.ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class EmbyConfig {
     public static final Marker IT = MarkerManager.getMarker("Config");
-
     public static final ForgeConfigSpec SPECS;
 
     // GENERAL
@@ -35,15 +34,17 @@ public class EmbyConfig {
     public static final EnumValue<FPSDisplaySystemMode> fpsDisplaySystemMode;
     public static final IntValue fpsDisplayMargin;
     public static final BooleanValue fpsDisplayShadow;
-    public static volatile int fpsDisplayMarginCache;
-    public static volatile boolean fpsDisplayShadowCache;
+    public static int fpsDisplayMarginCache;
+    public static boolean fpsDisplayShadowCache;
 
     // QUALITY
     public static final BooleanValue fog;
     public static final IntValue cloudsHeight;
+    public static final BooleanValue disableNameTagRender;
     public static final EnumValue<ChunkFadeSpeed> chunkFadeSpeed;
     public static volatile boolean fogCache;
     public static volatile int cloudsHeightCache;
+    public static volatile boolean disableNameTagRenderCache;
 
     // QUALITY: TRUE DARKNESS
     public static final EnumValue<DarknessMode> darknessMode;
@@ -76,10 +77,10 @@ public class EmbyConfig {
     public static final BooleanValue fontShadows;
     public static final BooleanValue fastChests;
     public static final BooleanValue fastBeds;
-    public static volatile boolean hideJREMICache;
-    public static volatile boolean fontShadowsCache;
-    public static volatile boolean fastChestsCache;
-    public static volatile boolean fastBedsCache;
+    public static boolean hideJREMICache;
+    public static boolean fontShadowsCache;
+    public static boolean fastChestsCache;
+    public static boolean fastBedsCache;
 
     public static final BooleanValue tileEntityDistanceCulling;
     public static final IntValue tileEntityCullingDistanceX;
@@ -89,12 +90,12 @@ public class EmbyConfig {
     public static final IntValue entityCullingDistanceY;
     public static final ConfigValue<List<? extends String>> entityWhitelist; // QUICK CHECK
     public static final ConfigValue<List<? extends String>> tileEntityWhitelist; // QUICK CHECK
-    public static volatile boolean tileEntityDistanceCullingCache;
-    public static volatile int tileEntityCullingDistanceXCache;
-    public static volatile int tileEntityCullingDistanceYCache;
-    public static volatile boolean entityDistanceCullingCache;
-    public static volatile int entityCullingDistanceXCache;
-    public static volatile int entityCullingDistanceYCache;
+    public static boolean tileEntityDistanceCullingCache;
+    public static int tileEntityCullingDistanceXCache;
+    public static int tileEntityCullingDistanceYCache;
+    public static boolean entityDistanceCullingCache;
+    public static int entityCullingDistanceXCache;
+    public static int entityCullingDistanceYCache;
 
     // OTHERS
     public static final EnumValue<AttachMode> borderlessAttachModeF11;
@@ -166,6 +167,10 @@ public class EmbyConfig {
         cloudsHeight = BUILDER
                 .comment("Raise clouds", "Modify clouds height perfect for a adaptative world experience")
                 .defineInRange("cloudsHeight", 192, 0, 512);
+
+        disableNameTagRender = BUILDER
+                .comment("Do not show me your name", "disables nametag rendering for players and entities")
+                .define("disableNameTagRendering", false);
 
         chunkFadeSpeed = BUILDER
                 .comment("Chunks fade in speed", "This option doesn't affect performance, just changes speed")
@@ -359,6 +364,7 @@ public class EmbyConfig {
 
         fogCache = fog.get();
         cloudsHeightCache = cloudsHeight.get();
+        disableNameTagRenderCache = disableNameTagRender.get();
 
         darknessOnOverworldCache = darknessOnOverworld.get();
         darknessOnNetherCache = darknessOnNether.get();

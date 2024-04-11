@@ -18,6 +18,9 @@
   "embeddium.plus.options.clouds.height.title": "Cloud Height",
   "embeddium.plus.options.clouds.height.desc": "Raises cloud height.\nConfigure the height of the clouds",
 
+  "embeddium.plus.options.nametag.disable_rendering.title": "Disable NameTag rendering",
+  "embeddium.plus.options.nametag.disable_rendering.desc": "Do not show me your name!\nDisables nametag rendering for players and entities",
+
   "embeddium.plus.options.culling.page": "Entity Culling",
   "embeddium.plus.options.culling.entity.title": "Use Max Entity Distance",
   "embeddium.plus.options.culling.entity.desc": "If enabled, Entities will be hidden based on configured distance limit",

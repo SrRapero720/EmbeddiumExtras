@@ -74,6 +74,21 @@ public class QualityPlusPage extends OptionPage {
                 .build()
         );
 
+        final var disableNameTagRendering = OptionImpl.createBuilder(boolean.class, qualityOptionsStorage)
+                .setName(Component.translatable("embeddium.plus.options.nametag.disable_rendering.title"))
+                .setTooltip(Component.translatable("embeddium.plus.options.nametag.disable_rendering.desc"))
+                .setControl(TickBoxControl::new)
+                .setBinding((opt, v) -> {
+                    EmbyConfig.disableNameTagRender.set(v);
+                    EmbyConfig.disableNameTagRenderCache = v;
+                }, opt -> EmbyConfig.disableNameTagRenderCache)
+                .build();
+
+        groups.add(OptionGroup.createBuilder()
+                .add(disableNameTagRendering)
+                .build()
+        );
+
         return ImmutableList.copyOf(groups);
     }
 }
