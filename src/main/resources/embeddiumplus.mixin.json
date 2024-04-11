@@ -34,7 +34,7 @@
     "jei_rei_emi.ReiOverlayMixin",
     "language.LanguageMixin",
     "skyblueband.FogRendererMixin",
-    "togglefog.FogMixin",
+    "togglefog.FogRendererMixin",
     "zume.ZumeKeyBindsForgeMixin"
   ]
 }

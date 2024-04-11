@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(value = FogRenderer.class, priority = 910)
-public abstract class FogMixin {
+public abstract class FogRendererMixin {
     @Unique private static final float FOG_START = -8.0F;
     @Unique private static final float FOG_END = 1_000_000.0F;
 
