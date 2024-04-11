@@ -39,12 +39,14 @@ public class EmbyConfig {
 
     // QUALITY
     public static final BooleanValue fog;
+    public static final BooleanValue blueBand;
     public static final IntValue cloudsHeight;
     public static final BooleanValue disableNameTagRender;
     public static final EnumValue<ChunkFadeSpeed> chunkFadeSpeed;
-    public static volatile boolean fogCache;
-    public static volatile int cloudsHeightCache;
-    public static volatile boolean disableNameTagRenderCache;
+    public static boolean fogCache;
+    public static boolean blueBandCache;
+    public static int cloudsHeightCache;
+    public static boolean disableNameTagRenderCache;
 
     // QUALITY: TRUE DARKNESS
     public static final EnumValue<DarknessMode> darknessMode;
@@ -162,8 +164,11 @@ public class EmbyConfig {
         // embeddiumplus -> quality
         BUILDER.push("quality");
         fog = BUILDER
-                .comment("Toggle fog feature", "Fog was a vanilla feature, toggling off may increases performance")
+                .comment("Toggle fog feature", "Fog was a vanilla feature")
                 .define("fog", true);
+        blueBand = BUILDER
+                .comment("Clean my skies", "Blue band was a vanilla feature, toggle off will show sky color directly")
+                .define("blueBand", true);
         cloudsHeight = BUILDER
                 .comment("Raise clouds", "Modify clouds height perfect for a adaptative world experience")
                 .defineInRange("cloudsHeight", 192, 0, 512);
@@ -363,6 +368,7 @@ public class EmbyConfig {
         fpsDisplayShadowCache = fpsDisplayShadow.get();
 
         fogCache = fog.get();
+        blueBandCache = blueBand.get();
         cloudsHeightCache = cloudsHeight.get();
         disableNameTagRenderCache = disableNameTagRender.get();
 

@@ -106,6 +106,8 @@
   "embeddium.plus.options.fastbeds.desc": "If enabled, replaces dynamic bed model with a static model, like a normal block. Increases performance and also let you use custom models with resource packs\nIMPORTANT: enabling/disabling it requires also enabling/disabling resourcepack",
   "embeddium.plus.options.fog.title": "Use Fog",
   "embeddium.plus.options.fog.desc": "If disabled, removed fog effect only in the overworld",
+  "embeddium.plus.options.blueband.title": "Use Sky Blue band",
+  "embeddium.plus.options.blueband.desc": "If disabled, removed the Blue Band effect in all dimensions",
   "embeddium.plus.options.fontshadow.title": "Font Shadows",
   "embeddium.plus.options.fontshadow.desc": "If disabled, text will stop rendering shadows giving a flat style.\nIncreases FPS depending of how much text is on the screen, specially with BetterF3 mods",
   "embeddium.plus.options.jei.title": "Hide JEI/REI/EMI Until Searching",

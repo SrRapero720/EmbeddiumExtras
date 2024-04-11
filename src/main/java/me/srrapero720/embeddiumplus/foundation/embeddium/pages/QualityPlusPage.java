@@ -38,6 +38,16 @@ public class QualityPlusPage extends OptionPage {
                 .setImpact(OptionImpact.LOW)
                 .build();
 
+        final var blueBand = OptionImpl.createBuilder(boolean.class, qualityOptionsStorage)
+                .setName(Component.translatable("embeddium.plus.options.blueband.title"))
+                .setTooltip(Component.translatable("embeddium.plus.options.blueband.desc"))
+                .setControl(TickBoxControl::new)
+                .setBinding((opt, v) -> {
+                    EmbyConfig.blueBand.set(v);
+                    EmbyConfig.blueBandCache = v;
+                }, opt -> EmbyConfig.blueBandCache)
+                .build();
+
         final var fadeInQuality = OptionImpl.createBuilder(EmbyConfig.ChunkFadeSpeed.class, qualityOptionsStorage)
                 .setName(Component.translatable("embeddium.plus.options.fadein.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.fadein.desc"))
@@ -54,6 +64,7 @@ public class QualityPlusPage extends OptionPage {
 
         groups.add(OptionGroup.createBuilder()
                 .add(fog)
+                .add(blueBand)
                 .add(fadeInQuality)
                 .build()
         );
