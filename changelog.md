@@ -1,3 +1,7 @@
+# RELEASE 1.2.8
+- [🍜] Updated Simplified Chinese translation (by qznfbnj)
+  - 🍜 I forgot to add him in the last changelog
+
 # RELEASE 1.2.7
 - [🐛] Fix REI is not working
 - [🐛] Disabled FastModels
