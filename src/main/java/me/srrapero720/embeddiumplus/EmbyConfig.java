@@ -62,17 +62,17 @@ public class EmbyConfig {
     public static final BooleanValue darknessAffectedByMoonPhase;
     public static final DoubleValue darknessNewMoonBright;
     public static final DoubleValue darknessFullMoonBright;
-    public static volatile boolean darknessOnOverworldCache;
-    public static volatile boolean darknessOnNetherCache;
-    public static volatile double darknessNetherFogBrightCache;
-    public static volatile boolean darknessOnEndCache;
-    public static volatile double darknessEndFogBrightCache;
-    public static volatile boolean darknessByDefaultCache;
-    public static volatile boolean darknessOnNoSkyLightCache;
-    public static volatile boolean darknessBlockLightOnlyCache;
-    public static volatile boolean darknessAffectedByMoonPhaseCache;
-    public static volatile double darknessNewMoonBrightCache;
-    public static volatile double darknessFullMoonBrightCache;
+    public static boolean darknessOnOverworldCache;
+    public static boolean darknessOnNetherCache;
+    public static double darknessNetherFogBrightCache;
+    public static boolean darknessOnEndCache;
+    public static double darknessEndFogBrightCache;
+    public static boolean darknessByDefaultCache;
+    public static boolean darknessOnNoSkyLightCache;
+    public static boolean darknessBlockLightOnlyCache;
+    public static boolean darknessAffectedByMoonPhaseCache;
+    public static double darknessNewMoonBrightCache;
+    public static double darknessFullMoonBrightCache;
 
     // PERFORMANCE;
     public static final BooleanValue hideJREMI;
