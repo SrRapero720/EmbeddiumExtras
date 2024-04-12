@@ -68,7 +68,7 @@
   "embeddium.plus.options.displayfps.title": "Отображение FPS",
   "embeddium.plus.options.displayfps.desc": "Отображает текущую частоту кадров в секунду. Расширенный режим также отображает минимальную частоту кадров в секунду, а также среднюю за 15 секунд, для оценки производительности.",
 
-  "embeddium.plus.options.displayfps.gravity.title": "Текстовая гравитация",
+  "embeddium.plus.options.displayfps.gravity.title": "Положение текста",
   "embeddium.plus.options.displayfps.gravity.desc": "Угловое положение дисплея FPS",
   "embeddium.plus.options.displayfps.gravity.left": "Слева",
   "embeddium.plus.options.displayfps.gravity.center": "По центру",
