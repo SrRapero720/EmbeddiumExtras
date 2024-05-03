@@ -36,6 +36,6 @@
     "leaves_culling.LeavesBlockMixin",
     "skyblueband.FogRendererMixin",
     "togglefog.FogRendererMixin",
-    "zume.ZumeKeyBindsForgeMixin"
+    "zume.KeyMappingMixin"
   ]
 }
