@@ -16,6 +16,7 @@ import org.spongepowered.asm.mixin.Unique;
 import static me.srrapero720.embeddiumplus.EmbeddiumPlus.LOGGER;
 
 @Mixin(EntityType.class)
+@SuppressWarnings("deprecation")
 public abstract class EntityTypeMixin implements IWhitelistCheck {
     @Unique private static final Marker e$IT = MarkerManager.getMarker("EntityType");
     @Unique private boolean embPlus$checked = false;

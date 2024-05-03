@@ -28,7 +28,7 @@ public class FogRendererMixin {
         return original.call(vec, fetcher);
     }
 
-    @WrapOperation(method = "setupColor", at = @At(value = "INVOKE", target = "Lorg/joml/Vector3f;dot(Lorg/joml/Vector3fc;)F"))
+    @WrapOperation(method = "setupColor", at = @At(value = "INVOKE", target = "Lorg/joml/Vector3f;dot(Lorg/joml/Vector3fc;)F", remap = false))
     private static float redirect$dot(Vector3f instance, Vector3fc v, Operation<Float> original) {
         if (!EmbyConfig.blueBandCache) return 0;
         return original.call(instance, v);
