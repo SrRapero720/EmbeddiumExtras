@@ -27,8 +27,8 @@ public class ZoomPage extends OptionPage {
                 .setTooltip(Component.translatable("embeddium.plus.options.zoom.desc"))
                 .setControl(TickBoxControl::new)
                 .setBinding(
-                        (options, value) -> options.disable = !value,
-                        options -> !options.disable
+                        (options, value) -> options.isDisabled = !value,
+                        options -> !options.isDisabled
                 )
                 .build();
 
@@ -37,8 +37,8 @@ public class ZoomPage extends OptionPage {
                 .setTooltip(Component.translatable("embeddium.plus.options.zoom.cinematic.desc"))
                 .setControl(TickBoxControl::new)
                 .setBinding(
-                        (options, value) -> options.enableCinematicZoom = value,
-                        options -> options.enableCinematicZoom
+                        (options, value) -> options.isCinematicZoomEnabled = value,
+                        options -> options.isCinematicZoomEnabled
                 )
                 .build();
 
@@ -67,8 +67,8 @@ public class ZoomPage extends OptionPage {
                 .setTooltip(Component.translatable("embeddium.plus.options.zoom.scrolling.desc"))
                 .setControl(TickBoxControl::new)
                 .setBinding(
-                        (options, value) -> options.enableZoomScrolling = value,
-                        options -> options.enableZoomScrolling
+                        (options, value) -> options.isZoomScrollingEnabled = value,
+                        options -> options.isZoomScrollingEnabled
                 )
                 .build();
 
@@ -77,8 +77,8 @@ public class ZoomPage extends OptionPage {
                 .setTooltip(Component.translatable("embeddium.plus.options.zoom.smoothness.desc"))
                 .setControl((option) -> new SliderControl(option, 50, 150, 10, i -> Component.literal(i + "").append(Component.translatable("embeddium.plus.options.common.millis"))))
                 .setBinding(
-                        (options, value) -> options.zoomSmoothnessMs = value.shortValue(),
-                        (options) -> (int) options.zoomSmoothnessMs
+                        (options, value) -> options.zoomSmoothnessMilliseconds = value.shortValue(),
+                        (options) -> (int) options.zoomSmoothnessMilliseconds
                 )
                 .build();
 
@@ -117,8 +117,8 @@ public class ZoomPage extends OptionPage {
                 .setTooltip(Component.translatable("embeddium.plus.options.zoom.toggle.desc"))
                 .setControl(TickBoxControl::new)
                 .setBinding(
-                        (options, value) -> options.toggleMode = value,
-                        options -> options.toggleMode
+                        (options, value) -> options.isFirstPersonToggleModeEnabled = value,
+                        options -> options.isFirstPersonToggleModeEnabled
                 )
                 .build();
 
@@ -127,8 +127,8 @@ public class ZoomPage extends OptionPage {
                 .setTooltip(Component.translatable("embeddium.plus.options.zoom.toggle.third_person.desc"))
                 .setControl(TickBoxControl::new)
                 .setBinding(
-                        (options, value) -> options.thirdPersonToggleMode = value,
-                        options -> options.thirdPersonToggleMode
+                        (options, value) -> options.isThirdPersonToggleModeEnabled = value,
+                        options -> options.isThirdPersonToggleModeEnabled
                 )
                 .build();
 
@@ -137,8 +137,8 @@ public class ZoomPage extends OptionPage {
                 .setTooltip(Component.translatable("embeddium.plus.options.zoom.min.desc"))
                 .setControl((option) -> new SliderControl(option, 0, 100, 10, v -> Component.literal(v / 10F + "°")))
                 .setBinding(
-                        (options, value) -> options.minFOV = value / 10F,
-                        (options) -> (int) options.minFOV * 10
+                        (options, value) -> options.minimumFOV = value / 10F,
+                        (options) -> (int) options.minimumFOV * 10
                 )
                 .build();
 
@@ -147,8 +147,8 @@ public class ZoomPage extends OptionPage {
                 .setTooltip(Component.translatable("embeddium.plus.options.zoom.third_person.min.desc"))
                 .setControl(opt -> new SliderControl(opt, 0, 10000, 25, v -> Component.translatable("sodium.options.biome_blend.value", v / 1000F)))
                 .setBinding(
-                        (options, value) -> options.minThirdPersonZoomDistance = value / 1000F,
-                        opts -> (int) opts.minThirdPersonZoomDistance * 1000
+                        (options, value) -> options.minimumThirdPersonZoomBlocks = value / 1000F,
+                        opts -> (int) opts.minimumThirdPersonZoomBlocks * 1000
                 )
                 .build();
 
@@ -157,8 +157,8 @@ public class ZoomPage extends OptionPage {
                 .setTooltip(Component.translatable("embeddium.plus.options.zoom.third_person.max.desc"))
                 .setControl(opt -> new SliderControl(opt, 0, 10000, 25, v -> Component.translatable("sodium.options.biome_blend.value", v / 1000F)))
                 .setBinding(
-                        (options, value) -> options.maxThirdPersonZoomDistance = value / 1000F,
-                        opts -> (int) opts.maxThirdPersonZoomDistance * 1000
+                        (options, value) -> options.maximumThirdPersonZoomBlocks = value / 1000F,
+                        opts -> (int) opts.maximumThirdPersonZoomBlocks * 1000
                 )
                 .build();
 

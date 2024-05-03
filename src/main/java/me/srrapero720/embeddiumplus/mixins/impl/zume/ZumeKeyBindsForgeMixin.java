@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
 // nolij will hate me for do that XD
-@Mixin({ dev.nolij.zume.lexforge18.ZumeKeyBind.class, dev.nolij.zume.lexforge.ZumeKeyBind.class })
+@Mixin({ zume.E.class, zume.L.class, zume.w.class })
 @Pseudo
 public class ZumeKeyBindsForgeMixin {
     @ModifyArg(

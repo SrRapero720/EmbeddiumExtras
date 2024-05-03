@@ -1,11 +1,12 @@
 package me.srrapero720.embeddiumplus.foundation.embeddium.storage;
 
-import dev.nolij.zume.common.Zume;
-import dev.nolij.zume.common.config.ZumeConfig;
+
+import dev.nolij.zume.api.config.v1.ZumeConfig;
+import dev.nolij.zume.api.config.v1.ZumeConfigAPI;
 import me.jellysquid.mods.sodium.client.gui.options.storage.OptionStorage;
 
 public class ZumeOptionsStorage implements OptionStorage<ZumeConfig> {
-    private final ZumeConfig cloneConfig = Zume.config.clone();
+    private final ZumeConfig cloneConfig = ZumeConfigAPI.getSnapshot();
 
     @Override
     public ZumeConfig getData() {
@@ -15,7 +16,7 @@ public class ZumeOptionsStorage implements OptionStorage<ZumeConfig> {
     @Override
     public void save() {
         try {
-            ZumeConfig.replace(cloneConfig);
+            ZumeConfigAPI.replaceConfig(cloneConfig);
         } catch (Exception e) {
             throw new IllegalStateException("Cannot store ZUME config");
         }
