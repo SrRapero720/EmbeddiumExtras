@@ -7,19 +7,15 @@ import net.minecraft.client.KeyMapping;
 import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Mutable;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(KeyMapping.class)
 public class KeyMappingMixin {
-    @Shadow private InputConstants.Key key;
-    @Shadow @Final @Mutable private InputConstants.Key defaultKey;
+    @Shadow @Final private String category;
 
-    @WrapOperation(method = "<init>(Ljava/lang/String;Lcom/mojang/blaze3d/platform/InputConstants$Type;ILjava/lang/String;)V", at = @At(value = "FIELD", target = "Lnet/minecraft/client/KeyMapping;category:Ljava/lang/String;"))
-    private void redirect$init(KeyMapping instance, String value, Operation<Void> original) {
-        if (value.equals("category.zume")) {
-            defaultKey = key = InputConstants.Type.KEYSYM.getOrCreate(GLFW.GLFW_KEY_C);
-        }
+    @WrapOperation(method = "<init>(Ljava/lang/String;Lcom/mojang/blaze3d/platform/InputConstants$Type;ILjava/lang/String;)V", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/platform/InputConstants$Type;getOrCreate(I)Lcom/mojang/blaze3d/platform/InputConstants$Key;"))
+    private InputConstants.Key redirect$init(InputConstants.Type instance, int pKeyCode, Operation<InputConstants.Key> original, String pName, InputConstants.Type pType, int methodkeycode, String pCategory) {
+        return original.call(instance, (category.equals("category.zume") && pKeyCode == GLFW.GLFW_KEY_Z) ? GLFW.GLFW_KEY_C : pKeyCode);
     }
 }
