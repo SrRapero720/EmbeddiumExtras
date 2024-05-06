@@ -1,3 +1,8 @@
+# RELEASE 1.2.10
+- [❌] Dropped 1.18.2 and 1.19.2 (this version will be the last release of EMB++ for those versions)
+- [🌐] Updated translations (I forgot to rebase again)
+  - [🍾] Updated Russian translation (by mpustovoi)
+
 # RELEASE 1.2.9
 - [🛠️] Removed optional dependency of Textrues Embeeddium Options
 - [🛠️] Bumped zume version range (and added support for zume 0.19)
