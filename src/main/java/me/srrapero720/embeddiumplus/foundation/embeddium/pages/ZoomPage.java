@@ -9,6 +9,8 @@ import me.jellysquid.mods.sodium.client.gui.options.control.SliderControl;
 import me.jellysquid.mods.sodium.client.gui.options.control.TickBoxControl;
 import me.srrapero720.embeddiumplus.foundation.embeddium.storage.ZumeOptionsStorage;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import org.embeddedt.embeddium.client.gui.options.OptionIdentifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +18,7 @@ import java.util.List;
 public class ZoomPage extends OptionPage {
 
     public ZoomPage() {
-        super(Component.translatable("embeddium.plus.options.zoom.page"), create(new ZumeOptionsStorage()));
+        super(OptionIdentifier.create(new ResourceLocation("zume", "zume")), Component.translatable("embeddium.plus.options.zoom.page"), create(new ZumeOptionsStorage()));
     }
 
     private static ImmutableList<OptionGroup> create(ZumeOptionsStorage zoomOptionsStorage) {
