@@ -1,3 +1,11 @@
+# RELEASE 1.2.9
+- [🛠️] Removed optional dependency of Textrues Embeeddium Options
+- [🛠️] Bumped zume version range (and added support for zume 0.19)
+- [🛠️] Removed mixins related to embeddium (now uses embeddium events)
+- [🛠️] Deprecated zume config screen in favor of future zume releases (And Embeddium++Additions)
+- [🌐] Updated translations
+  - [🍾] Updated Russian translation (by mpustovoi)
+
 # RELEASE 1.2.8
 - [🐛] Fixed weird crash with some mods unregistering their block entities
 - [🛠️] Marked Textrues Embeeddium Options as a optional dependency (in favor of future Embeddium versions)
