@@ -1,5 +1,6 @@
 # RELEASE 1.2.10
 - [❌] Dropped 1.18.2 and 1.19.2 (this version will be the last release of EMB++ for those versions)
+- [❌] (1.18-1.19) Removed ZUME integration (prevent crashes with modern zume)
 - [🌐] Updated translations (I forgot to rebase again)
   - [🍾] Updated Russian translation (by mpustovoi)
 
