@@ -9,24 +9,27 @@ import me.jellysquid.mods.sodium.client.gui.options.control.ControlValueFormatte
 import me.jellysquid.mods.sodium.client.gui.options.control.CyclingControl;
 import me.jellysquid.mods.sodium.client.gui.options.control.SliderControl;
 import me.jellysquid.mods.sodium.client.gui.options.control.TickBoxControl;
-import me.jellysquid.mods.sodium.client.gui.options.storage.SodiumOptionsStorage;
+import me.srrapero720.embeddiumplus.EmbeddiumPlus;
 import me.srrapero720.embeddiumplus.EmbyConfig;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import org.embeddedt.embeddium.client.gui.options.OptionIdentifier;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class QualityPlusPage extends OptionPage {
-    private static final SodiumOptionsStorage qualityOptionsStorage = new SodiumOptionsStorage();
+import static me.srrapero720.embeddiumplus.foundation.embeddium.EmbPlusOptions.STORAGE;
 
+public class QualityPlusPage extends OptionPage {
+    public static final OptionIdentifier<Void> ID = OptionIdentifier.create(new ResourceLocation(EmbeddiumPlus.ID, "quality"));
     public QualityPlusPage() {
-        super(Component.translatable("sodium.options.pages.quality").append("++"), create());
+        super(ID, Component.translatable("sodium.options.pages.quality").append("++"), create());
     }
 
     private static ImmutableList<OptionGroup> create() {
         final List<OptionGroup> groups = new ArrayList<>();
 
-        final var fog = OptionImpl.createBuilder(boolean.class, qualityOptionsStorage)
+        final var fog = OptionImpl.createBuilder(boolean.class, STORAGE)
                 .setName(Component.translatable("embeddium.plus.options.fog.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.fog.desc"))
                 .setControl(TickBoxControl::new)
@@ -38,7 +41,7 @@ public class QualityPlusPage extends OptionPage {
                 .setImpact(OptionImpact.LOW)
                 .build();
 
-        final var blueBand = OptionImpl.createBuilder(boolean.class, qualityOptionsStorage)
+        final var blueBand = OptionImpl.createBuilder(boolean.class, STORAGE)
                 .setName(Component.translatable("embeddium.plus.options.blueband.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.blueband.desc"))
                 .setControl(TickBoxControl::new)
@@ -48,7 +51,7 @@ public class QualityPlusPage extends OptionPage {
                 }, opt -> EmbyConfig.blueBandCache)
                 .build();
 
-        final var fadeInQuality = OptionImpl.createBuilder(EmbyConfig.ChunkFadeSpeed.class, qualityOptionsStorage)
+        final var fadeInQuality = OptionImpl.createBuilder(EmbyConfig.ChunkFadeSpeed.class, STORAGE)
                 .setName(Component.translatable("embeddium.plus.options.fadein.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.fadein.desc"))
                 .setControl((option) -> new CyclingControl<>(option, EmbyConfig.ChunkFadeSpeed.class, new Component[]{
@@ -69,7 +72,7 @@ public class QualityPlusPage extends OptionPage {
                 .build()
         );
 
-        final var cloudHeight = OptionImpl.createBuilder(int.class, qualityOptionsStorage)
+        final var cloudHeight = OptionImpl.createBuilder(int.class, STORAGE)
                 .setName(Component.translatable("embeddium.plus.options.clouds.height.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.clouds.height.desc"))
                 .setControl((option) -> new SliderControl(option, 64, 364, 4, ControlValueFormatter.biomeBlend()))
@@ -85,7 +88,7 @@ public class QualityPlusPage extends OptionPage {
                 .build()
         );
 
-        final var disableNameTagRendering = OptionImpl.createBuilder(boolean.class, qualityOptionsStorage)
+        final var disableNameTagRendering = OptionImpl.createBuilder(boolean.class, STORAGE)
                 .setName(Component.translatable("embeddium.plus.options.nametag.disable_rendering.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.nametag.disable_rendering.desc"))
                 .setControl(TickBoxControl::new)

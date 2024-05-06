@@ -135,7 +135,8 @@
   "embeddium.plus.options.screen.borderless": "Borderless",
   "embeddium.plus.options.screen.windowed": "Windowed",
 
-  "embeddium.plus.options.zoom.page": "Zume",
+  "_____comment": "zume translations will be re/moved officially to ZUME",
+  "embeddium.plus.options.zoom.page": "Zoom Config",
   "embeddium.plus.options.zoom.title": "Enable Zume",
   "embeddium.plus.options.zoom.desc": "If `true`, the mod will be disabled (on some platforms, key binds will still show in game options; they won't do anything if this is set to `true`).\nRequires re-launch to take effect.",
   "embeddium.plus.options.zoom.cinematic.title": "Cinematic Zoom",

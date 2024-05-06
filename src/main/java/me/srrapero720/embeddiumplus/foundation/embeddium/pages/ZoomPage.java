@@ -1,12 +1,14 @@
 package me.srrapero720.embeddiumplus.foundation.embeddium.pages;
 
 import com.google.common.collect.ImmutableList;
+import dev.nolij.zume.api.platform.v0.ZumeAPI;
 import me.jellysquid.mods.sodium.client.gui.options.OptionGroup;
 import me.jellysquid.mods.sodium.client.gui.options.OptionImpl;
 import me.jellysquid.mods.sodium.client.gui.options.OptionPage;
 import me.jellysquid.mods.sodium.client.gui.options.control.ControlValueFormatter;
 import me.jellysquid.mods.sodium.client.gui.options.control.SliderControl;
 import me.jellysquid.mods.sodium.client.gui.options.control.TickBoxControl;
+import me.srrapero720.embeddiumplus.EmbeddiumPlus;
 import me.srrapero720.embeddiumplus.foundation.embeddium.storage.ZumeOptionsStorage;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -15,10 +17,11 @@ import org.embeddedt.embeddium.client.gui.options.OptionIdentifier;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated(forRemoval = true)
 public class ZoomPage extends OptionPage {
-
+    public static final OptionIdentifier<Void> ID = OptionIdentifier.create(new ResourceLocation("zume", "page"));
     public ZoomPage() {
-        super(OptionIdentifier.create(new ResourceLocation("zume", "zume")), Component.translatable("embeddium.plus.options.zoom.page"), create(new ZumeOptionsStorage()));
+        super(ID, Component.translatable("embeddium.plus.options.zoom.page"), create(new ZumeOptionsStorage()));
     }
 
     private static ImmutableList<OptionGroup> create(ZumeOptionsStorage zoomOptionsStorage) {

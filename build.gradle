@@ -63,7 +63,7 @@ dependencies {
     }
 
     // DEPENDENCIES
-    implementation fg.deobf("org.embeddedt:embeddium-${mcversion}:${embeddiumversion}")
+    implementation fg.deobf("curse.maven:embeddium-908741:5308079")
     implementation fg.deobf("dev.nolij:zume:0.19.0-rc.1")
 
     // MOD COMPAT
@@ -73,7 +73,6 @@ dependencies {
         implementation fg.deobf("curse.maven:architectury-api-419699:5084452")
 
     compileOnly fg.deobf("curse.maven:emi-580555:${emiversion}")
-    runtimeOnly fg.deobf("curse.maven:textrues-embeddium-options-910506:${embeddiumoptionsversion}")
     runtimeOnly fg.deobf("curse.maven:oculus-581495:${oculusversion}")
 
     // MOD SUPPORT

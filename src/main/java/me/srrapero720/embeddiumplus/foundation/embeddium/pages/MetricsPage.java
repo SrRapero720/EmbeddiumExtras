@@ -8,8 +8,11 @@ import me.jellysquid.mods.sodium.client.gui.options.OptionPage;
 import me.jellysquid.mods.sodium.client.gui.options.control.CyclingControl;
 import me.jellysquid.mods.sodium.client.gui.options.control.SliderControl;
 import me.jellysquid.mods.sodium.client.gui.options.control.TickBoxControl;
+import me.srrapero720.embeddiumplus.EmbeddiumPlus;
 import me.srrapero720.embeddiumplus.EmbyConfig;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import org.embeddedt.embeddium.client.gui.options.OptionIdentifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +20,9 @@ import java.util.List;
 import static me.srrapero720.embeddiumplus.foundation.embeddium.EmbPlusOptions.STORAGE;
 
 public class MetricsPage extends OptionPage {
+    public static final OptionIdentifier<Void> ID = OptionIdentifier.create(new ResourceLocation(EmbeddiumPlus.ID, "metrics"));
     public MetricsPage() {
-        super(Component.translatable("embeddium.plus.options.metrics.page"), create());
+        super(ID, Component.translatable("embeddium.plus.options.metrics.page"), create());
     }
 
     private static ImmutableList<OptionGroup> create() {

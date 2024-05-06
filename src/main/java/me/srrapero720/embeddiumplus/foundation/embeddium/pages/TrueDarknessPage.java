@@ -9,24 +9,28 @@ import me.jellysquid.mods.sodium.client.gui.options.control.CyclingControl;
 import me.jellysquid.mods.sodium.client.gui.options.control.SliderControl;
 import me.jellysquid.mods.sodium.client.gui.options.control.TickBoxControl;
 import me.jellysquid.mods.sodium.client.gui.options.storage.SodiumOptionsStorage;
+import me.srrapero720.embeddiumplus.EmbeddiumPlus;
 import me.srrapero720.embeddiumplus.EmbyConfig;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import org.embeddedt.embeddium.client.gui.options.OptionIdentifier;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TrueDarknessPage extends OptionPage {
-    private static final SodiumOptionsStorage performanceOptionsStorage = new SodiumOptionsStorage();
+import static me.srrapero720.embeddiumplus.foundation.embeddium.EmbPlusOptions.STORAGE;
 
+public class TrueDarknessPage extends OptionPage {
+    public static final OptionIdentifier<Void> ID = OptionIdentifier.create(new ResourceLocation(EmbeddiumPlus.ID, "true_darkness"));
     public TrueDarknessPage() {
-        super(Component.translatable("embeddium.plus.options.darkness.page"), create());
+        super(ID, Component.translatable("embeddium.plus.options.darkness.page"), create());
     }
 
     private static ImmutableList<OptionGroup> create() {
         final List<OptionGroup> groups = new ArrayList<>();
 
         // GENERAL ENABLE
-        final var darknessMode = OptionImpl.createBuilder(EmbyConfig.DarknessMode.class, performanceOptionsStorage)
+        final var darknessMode = OptionImpl.createBuilder(EmbyConfig.DarknessMode.class, STORAGE)
                 .setName(Component.translatable("embeddium.plus.options.darkness.mode.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.darkness.mode.desc"))
                 .setControl((option) -> new CyclingControl<>(option, EmbyConfig.DarknessMode.class, new Component[]{
@@ -40,7 +44,7 @@ public class TrueDarknessPage extends OptionPage {
                         (opts) -> EmbyConfig.darknessMode.get())
                 .build();
 
-        var noSkylight = OptionImpl.createBuilder(boolean.class, performanceOptionsStorage)
+        var noSkylight = OptionImpl.createBuilder(boolean.class, STORAGE)
                 .setName(Component.translatable("embeddium.plus.options.darkness.noskylight.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.darkness.noskylight.desc"))
                 .setControl(TickBoxControl::new)
@@ -58,7 +62,7 @@ public class TrueDarknessPage extends OptionPage {
         );
 
         // OVERWORLD
-        var darknessOtherDim = OptionImpl.createBuilder(boolean.class, performanceOptionsStorage)
+        var darknessOtherDim = OptionImpl.createBuilder(boolean.class, STORAGE)
                 .setName(Component.translatable("embeddium.plus.options.darkness.others.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.darkness.others.desc"))
                 .setControl(TickBoxControl::new)
@@ -68,7 +72,7 @@ public class TrueDarknessPage extends OptionPage {
                         },
                         (options) -> EmbyConfig.darknessByDefaultCache)
                 .build();
-        var darknessOnOverworld = OptionImpl.createBuilder(boolean.class, performanceOptionsStorage)
+        var darknessOnOverworld = OptionImpl.createBuilder(boolean.class, STORAGE)
                 .setName(Component.translatable("embeddium.plus.options.darkness.overworld.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.darkness.overworld.desc"))
                 .setControl(TickBoxControl::new)
@@ -79,7 +83,7 @@ public class TrueDarknessPage extends OptionPage {
                         (options) -> EmbyConfig.darknessOnOverworldCache)
                 .build();
 
-        var darknessOnNether = OptionImpl.createBuilder(boolean.class, performanceOptionsStorage)
+        var darknessOnNether = OptionImpl.createBuilder(boolean.class, STORAGE)
                 .setName(Component.translatable("embeddium.plus.options.darkness.nether.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.darkness.nether.desc"))
                 .setControl(TickBoxControl::new)
@@ -90,7 +94,7 @@ public class TrueDarknessPage extends OptionPage {
                         (options) -> EmbyConfig.darknessOnNetherCache)
                 .build();
 
-        final var netherFogBright = OptionImpl.createBuilder(int.class, performanceOptionsStorage)
+        final var netherFogBright = OptionImpl.createBuilder(int.class, STORAGE)
                 .setName(Component.translatable("embeddium.plus.options.darkness.nether.brightness.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.darkness.nether.brightness.desc"))
                 .setControl((option) -> new SliderControl(option, 0, 100, 1, ControlValueFormatter.percentage()))
@@ -102,7 +106,7 @@ public class TrueDarknessPage extends OptionPage {
                         (options) -> Math.toIntExact(Math.round(EmbyConfig.darknessNetherFogBrightCache * 100)))
                 .build();
 
-        var darknessOnEnd = OptionImpl.createBuilder(boolean.class, performanceOptionsStorage)
+        var darknessOnEnd = OptionImpl.createBuilder(boolean.class, STORAGE)
                 .setName(Component.translatable("embeddium.plus.options.darkness.end.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.darkness.end.desc"))
                 .setControl(TickBoxControl::new)
@@ -113,7 +117,7 @@ public class TrueDarknessPage extends OptionPage {
                         (options) -> EmbyConfig.darknessOnEndCache)
                 .build();
 
-        final var endFogBright = OptionImpl.createBuilder(int.class, performanceOptionsStorage)
+        final var endFogBright = OptionImpl.createBuilder(int.class, STORAGE)
                 .setName(Component.translatable("embeddium.plus.options.darkness.end.brightness.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.darkness.end.brightness.desc"))
                 .setControl((option) -> new SliderControl(option, 0, 100, 1, ControlValueFormatter.percentage()))
@@ -143,7 +147,7 @@ public class TrueDarknessPage extends OptionPage {
                 .build()
         );
 
-        var blockLightOnly = OptionImpl.createBuilder(boolean.class, performanceOptionsStorage)
+        var blockLightOnly = OptionImpl.createBuilder(boolean.class, STORAGE)
                 .setName(Component.translatable("embeddium.plus.options.darkness.blocklightonly.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.darkness.blocklightonly.desc"))
                 .setControl(TickBoxControl::new)
@@ -156,7 +160,7 @@ public class TrueDarknessPage extends OptionPage {
                 .build();
 
 
-        var affectedByMoonPhase = OptionImpl.createBuilder(boolean.class, performanceOptionsStorage)
+        var affectedByMoonPhase = OptionImpl.createBuilder(boolean.class, STORAGE)
                 .setName(Component.translatable("embeddium.plus.options.darkness.moonphase.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.darkness.moonphase.desc"))
                 .setControl(TickBoxControl::new)
@@ -167,7 +171,7 @@ public class TrueDarknessPage extends OptionPage {
                         (options) -> EmbyConfig.darknessAffectedByMoonPhaseCache)
                 .build();
 
-        final var newMoonBright = OptionImpl.createBuilder(int.class, performanceOptionsStorage)
+        final var newMoonBright = OptionImpl.createBuilder(int.class, STORAGE)
                 .setName(Component.translatable("embeddium.plus.options.darkness.moonphase.fresh.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.darkness.moonphase.fresh.desc"))
                 .setControl((option) -> new SliderControl(option, 0, 100, 1, ControlValueFormatter.percentage()))
@@ -179,7 +183,7 @@ public class TrueDarknessPage extends OptionPage {
                         (options) -> Math.toIntExact(Math.round(EmbyConfig.darknessNewMoonBrightCache * 100d)))
                 .build();
 
-        final var fullMoonBright = OptionImpl.createBuilder(int.class, performanceOptionsStorage)
+        final var fullMoonBright = OptionImpl.createBuilder(int.class, STORAGE)
                 .setName(Component.translatable("embeddium.plus.options.darkness.moonphase.full.title"))
                 .setTooltip(Component.translatable("embeddium.plus.options.darkness.moonphase.full.desc"))
                 .setControl((option) -> new SliderControl(option, 0, 100, 1, ControlValueFormatter.percentage()))

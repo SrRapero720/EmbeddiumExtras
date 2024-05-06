@@ -17,8 +17,6 @@
     "darkness.LightMapTexManagerMixin",
     "darkness.NativeImageTextureMixin",
     "darkness.accessors.LightTextureAccessor",
-    "embeddium.EmbOptionsMixin",
-    "embeddium.EmbPagesMixin",
     "entitydistance.EntityDispatcherMixin",
     "entitydistance.EntityTypeMixin",
     "entitydistance.TileDispatcherMixin",
