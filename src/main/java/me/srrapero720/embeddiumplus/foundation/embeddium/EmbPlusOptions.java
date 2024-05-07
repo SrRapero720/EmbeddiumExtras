@@ -54,7 +54,7 @@ public class EmbPlusOptions {
 
     @SubscribeEvent
     public static void onEmbeddiumPagesRegister(OptionGroupConstructionEvent e) {
-        if (e.getId().toString().equals(StandardOptions.Group.WINDOW.toString())) {
+        if (e.getId() != null && e.getId().toString().equals(StandardOptions.Group.WINDOW.toString())) {
             var opions = e.getOptions();
             for (int i = 0; i < opions.size(); i++) {
                 if (opions.get(i).getId().toString().equals(StandardOptions.Option.FULLSCREEN.toString())) {
@@ -66,7 +66,7 @@ public class EmbPlusOptions {
 
     @SubscribeEvent
     public static void onEmbeddiumGroupRegister(OptionPageConstructionEvent e) {
-        if (e.getId().equals(StandardOptions.Pages.PERFORMANCE)) {
+        if (e.getId() != null && e.getId().equals(StandardOptions.Pages.PERFORMANCE)) {
             var builder = OptionGroup.createBuilder();
             var sodiumOpts = SodiumGameOptionPages.getVanillaOpts();
             var fontShadow = OptionImpl.createBuilder(boolean.class, sodiumOpts)
