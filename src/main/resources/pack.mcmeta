@@ -1,6 +1,6 @@
 {
   "pack": {
-    "description": "${modname} resources",
-    "pack_format": 15
+    "description": "${modname} translations and textures",
+    "pack_format": ${modpackformat}
   }
 }

@@ -10,22 +10,21 @@ plugins {
     id 'net.darkhax.curseforgegradle' version '1.1.15'
 }
 
-version = "${mcversion}-v${modversion}"
+version = "$mcversion-v$modversion"
 
 base {
     archivesName = modid
-    targetCompatibility = JavaVersion.VERSION_17
-    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = sourceCompatibility = JavaVersion.VERSION_17
 }
 
 minecraft {
-    mappings channel: "${mappingsch}", version: "${mappings_version}-${mcversion}"
+    mappings channel: "$mappingsch", version: "$mappings_version-$mcversion"
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     copyIdeResources = true
     runs {
         configureEach {
             workingDirectory file('run')
-            arg "-mixin.config=${modid}.${mixin_file_suffix}"
+            arg "-mixin.config=$modid.$mixin_file_suffix"
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
             property 'terminal.jline', 'true'
@@ -57,40 +56,39 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${mcversion}-${fgversion}"
+    minecraft "net.minecraftforge:forge:$mcversion-$fgversion"
 
     // MIXINS
     annotationProcessor "net.fabricmc:sponge-mixin:0.12.5+mixin.0.8.5"
-    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.3.5"))
-    implementation(jarJar("io.github.llamalad7:mixinextras-forge:0.3.5")) {
-        jarJar.ranged(it, "[0.3.5,)")
-    }
+    compileOnly(annotationProcessor "io.github.llamalad7:mixinextras-common:0.3.5")
+    implementation "io.github.llamalad7:mixinextras-forge:0.3.5"
 
     // DEPENDENCIES
-    implementation fg.deobf("curse.maven:embeddium-908741:5308079")
-    implementation fg.deobf("dev.nolij:zume:0.19.0-rc.1")
+    implementation fg.deobf("org.embeddedt:embeddium-$mcversion:$embeddiumversion")
+    implementation fg.deobf("dev.nolij:zume:0.19.0")
 
     // MOD COMPAT
-    compileOnly fg.deobf("curse.maven:jei-238222:${jeiversion}")
-    implementation fg.deobf("curse.maven:roughly-enough-items-310111:${reiversion}")
-        implementation fg.deobf("curse.maven:cloth-config-348521:4973441")
-        implementation fg.deobf("curse.maven:architectury-api-419699:5084452")
+    compileOnly fg.deobf("curse.maven:jei-238222:$jeiversion")
+    implementation fg.deobf("curse.maven:roughly-enough-items-310111:$reiversion"){
+        implementation fg.deobf("curse.maven:architectury-api-419699:$archversion")
+        implementation fg.deobf("curse.maven:cloth-config-348521:$clothversion")
+    }
 
-    compileOnly fg.deobf("curse.maven:emi-580555:${emiversion}")
-    runtimeOnly fg.deobf("curse.maven:oculus-581495:${oculusversion}")
+    compileOnly fg.deobf("curse.maven:emi-580555:$emiversion")
+    runtimeOnly fg.deobf("curse.maven:oculus-581495:$oculusversion")
 
     // MOD SUPPORT
-    implementation fg.deobf("com.simibubi.create:create-${mcversion}:${createversion}:slim") { transitive = false }
-    implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${mcversion}:${flywheelversion}")
-    implementation fg.deobf("com.tterrag.registrate:Registrate:${registrateversion}")
+    implementation fg.deobf("com.simibubi.create:create-$mcversion:$createversion:slim") { transitive = false }
+    implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-$mcversion:$flywheelversion")
+    implementation fg.deobf("com.tterrag.registrate:Registrate:$registrateversion")
 
     // UTILITY
     runtimeOnly fg.deobf("curse.maven:worldedit-225608:${worldeditversion}")
 }
 
 mixin {
-    add sourceSets.main, "${modid}.${mixin_refmap_suffix}"
-    config("${modid}.${mixin_file_suffix}")
+    add sourceSets.main, "$modid.$mixin_refmap_suffix"
+    config("$modid.$mixin_file_suffix")
 }
 
 // Process target resources with mod info
@@ -100,12 +98,8 @@ processResources {
         expand(rootProject.properties)
     }
 }
-tasks.withType(JavaCompile).configureEach {
-    it.options.encoding = 'UTF-8'
-}
 
 jar {
-    archiveClassifier = 'ignore'
     manifest {
         attributes([
                 "Specification-Title": modid,
@@ -115,33 +109,33 @@ jar {
                 "Implementation-Version": modversion,
                 "Implementation-Vendor" : modauthor,
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-                "MixinConfigs": "${modid}.${mixin_file_suffix}"
+                "MixinConfigs": "$modid.$mixin_file_suffix"
         ])
     }
     finalizedBy('reobfJar')
 }
 
-jarJar.enable()
-tasks.jarJar.archiveClassifier = ''
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = 'UTF-8'
+}
 
 task upload(type: GradleBuild) {
-    description 'Uploads new version to modrinth and curseforge.'
+    description 'Uploads new version to curseforge and modrinth'
     group = 'publishing'
-    tasks = [ 'curseforge', 'modrinth']
+    tasks = [ 'curseforge', 'modrinth' ]
 }
 
 tasks.modrinth.enabled = System.getenv("MODRINTH_TOKEN") != null
-tasks.modrinth.group = 'publishing'
 modrinth {
     token = System.getenv("MODRINTH_TOKEN")
-    versionName = modname + "/" + mcversion + "/" + modversion
+    uploadFile = jar
     projectId = modrinthid
+    versionName = modname + "/" + mcversion + "/v" + modversion
     versionNumber = mcversion + "-v" + modversion
     versionType = versiontype
-    uploadFile = jar
     gameVersions = [ mcversion ]
-    changelog = getChangelogText(true)
     loaders = [ "forge", "neoforge" ]
+    changelog = getChangelogText(true)
     dependencies {
         required.project "embeddium"
         optional.project "zume"
@@ -149,24 +143,21 @@ modrinth {
     }
 }
 
-
 task curseforge(type: TaskPublishCurseForge) {
+    apiToken = System.getenv("CURSEFORGE_TOKEN")
+    enabled = apiToken != null
     disableVersionDetection()
 
-    apiToken = System.getenv("CURSEFORGE_TOKEN") != null ? System.getenv("CURSEFORGE_TOKEN") : "empty"
-
-    // MAIN FILE
     def mainFile = upload(curseforgeid, jar)
-    mainFile.displayName = modname + "/" + mcversion + "/" + modversion
-    mainFile.changelog = getChangelogText(false)
-    mainFile.changelogType = "markdown"
-    mainFile.addModLoader("Forge")
-    mainFile.addModLoader("NeoForge")
+    mainFile.displayName = modname + "/" + mcversion + "/v" + modversion
+    mainFile.releaseType = versiontype
     mainFile.addGameVersion(mcversion, "client")
+    mainFile.addModLoader("Forge", "NeoForge")
     mainFile.addRequirement("embeddium")
     mainFile.addOptional("zume")
     mainFile.addIncompatibility("xenon", "magnesium-extras")
-    mainFile.releaseType = versiontype
+    mainFile.changelog = getChangelogText(false)
+    mainFile.changelogType = "markdown"
 }
 
 String getChangelogText(boolean latest) {

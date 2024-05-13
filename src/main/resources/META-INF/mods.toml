@@ -2,7 +2,6 @@ modLoader="javafml" #mandatory
 loaderVersion="${fgrange}"
 license="${modlicense}"
 issueTrackerURL="https://github.com/${github_project}/issues"
-displayTest="IGNORE_SERVER_VERSION"
 
 [[mods]]
     modId="${modid}"
@@ -13,7 +12,7 @@ displayTest="IGNORE_SERVER_VERSION"
     authors="${modauthor}" #optional
     credits="${modcredits}"
     displayURL="https://www.curseforge.com/minecraft/mc-mods/embeddiumplus"
-    description='''${mod_description}'''
+    description='''${moddesc}'''
 
 [[dependencies.${modid}]]
     modId="forge"
