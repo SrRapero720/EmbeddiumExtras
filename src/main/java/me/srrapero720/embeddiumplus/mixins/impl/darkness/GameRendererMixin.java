@@ -16,17 +16,16 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(GameRenderer.class)
 public abstract class GameRendererMixin {
 	@Shadow @Final public LightTexture lightTexture;
-	@Shadow public abstract Minecraft getMinecraft();
+	@Shadow @Final private Minecraft minecraft;
 
 	@Inject(method = "renderLevel", at = @At(value = "HEAD"))
 	private void inject$renderLevel(float tickDelta, long nanos, PoseStack matrixStack, CallbackInfo ci) {
-		final var mc = getMinecraft();
 		final var lightTexAccessor = (LightTextureAccessor) lightTexture;
 
 		if (lightTexAccessor.isDirty()) {
-			mc.getProfiler().push("lightTex");
-			DarknessPlus.updateLuminance(tickDelta, mc, (GameRenderer) (Object) this, lightTexAccessor.getFlicker());
-			mc.getProfiler().pop();
+			minecraft.getProfiler().push("lightTex");
+			DarknessPlus.updateLuminance(tickDelta, minecraft, (GameRenderer) (Object) this, lightTexAccessor.getFlicker());
+			minecraft.getProfiler().pop();
 		}
 	}
 }

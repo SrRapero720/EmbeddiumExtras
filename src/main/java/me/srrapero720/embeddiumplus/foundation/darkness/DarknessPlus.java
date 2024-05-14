@@ -178,29 +178,9 @@ public class DarknessPlus {
                 green = green * (0.99F - min) + min;
                 blue = blue * (0.99F - min) + min;
 
-                if (red > 1.0F) {
-                    red = 1.0F;
-                }
-
-                if (green > 1.0F) {
-                    green = 1.0F;
-                }
-
-                if (blue > 1.0F) {
-                    blue = 1.0F;
-                }
-
-                if (red < 0.0F) {
-                    red = 0.0F;
-                }
-
-                if (green < 0.0F) {
-                    green = 0.0F;
-                }
-
-                if (blue < 0.0F) {
-                    blue = 0.0F;
-                }
+                red = Mth.clamp(red, 0.0f, 1.0f);
+                green = Mth.clamp(green, 0.0f, 1.0f);
+                blue = Mth.clamp(blue, 0.0f, 1.0f);
 
                 LUMINANCE[blockIndex][skyIndex] = DarknessPlus.luminance(red, green, blue);
             }
