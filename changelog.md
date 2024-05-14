@@ -1,3 +1,8 @@
+# RELEASE 1.2.12
+- [🛠️] Unshipped MixinExtra (embeddium has it now)
+- [🛠️] Re-moved unused resources 
+- [🛠️] Performed some sanity changes on the codee
+
 # RELEASE 1.2.11
 - [🐛] Fixed NullPointerException crashes opening video settings (mb)
 
