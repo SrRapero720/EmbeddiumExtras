@@ -3,11 +3,11 @@ package me.srrapero720.embeddiumplus.foundation.fps;
 import java.util.Arrays;
 
 public class AverageQueue {
-    private final int[] AVG_COUNT = new int[18];
+    private final int[] AVG_COUNT = new int[24];
     private boolean f = false;
     private int used = 0;
 
-    public AverageQueue push(int value) {
+    public void push(int value) {
         if (this.used == this.AVG_COUNT.length) {
             this.used = 0;
             this.f = true;
@@ -18,7 +18,6 @@ public class AverageQueue {
         }
 
         this.AVG_COUNT[this.used++] = value;
-        return this;
     }
 
     int calculate() {
