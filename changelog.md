@@ -1,3 +1,6 @@
+# RELEASE 1.2.13
+- [🐛] Fixed crashes due to non-renamed accessors (fixes BadOptimizations mod crashes)
+
 # RELEASE 1.2.12
 - [🛠️] Unshipped MixinExtra (embeddium has it now)
 - [🛠️] Re-moved unused resources 
