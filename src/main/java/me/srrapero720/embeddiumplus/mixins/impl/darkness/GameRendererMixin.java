@@ -22,9 +22,9 @@ public abstract class GameRendererMixin {
 	private void inject$renderLevel(float tickDelta, long nanos, PoseStack matrixStack, CallbackInfo ci) {
 		final var lightTexAccessor = (LightTextureAccessor) lightTexture;
 
-		if (lightTexAccessor.isDirty()) {
+		if (lightTexAccessor.embPlus$isDirty()) {
 			minecraft.getProfiler().push("lightTex");
-			DarknessPlus.updateLuminance(tickDelta, minecraft, (GameRenderer) (Object) this, lightTexAccessor.getFlicker());
+			DarknessPlus.updateLuminance(tickDelta, minecraft, (GameRenderer) (Object) this, lightTexAccessor.embPlus$getFlicker());
 			minecraft.getProfiler().pop();
 		}
 	}
